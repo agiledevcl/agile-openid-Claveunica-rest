@@ -2,11 +2,12 @@ package cl.agile.openid;
 
 public class CUResponse {
 	
-	public String nombres;
-	public String apellidoPaterno;
-	public String apellidoMaterno;
-	public String sub;
-	public String RUT;
+	public String nombres = "";
+	public String apellidoPaterno = "";
+	public String apellidoMaterno = "";
+	public String sub = "";
+	public String RUT = "";
+	
 	public String getNombres() {
 		return nombres;
 	}

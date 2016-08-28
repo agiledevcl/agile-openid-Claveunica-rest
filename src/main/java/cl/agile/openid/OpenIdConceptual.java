@@ -37,22 +37,22 @@ import com.nimbusds.openid.connect.sdk.OIDCScopeValue;
 import com.nimbusds.openid.connect.sdk.claims.ACR;
 
 /**
- * Servlet implementation class OpenIdConceptual
+ * Este Servlet es el punto de entrada para hacer una consulta a Clave Única de SegPres
+ * 
  */
 public class OpenIdConceptual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	//URL de autorización de Clave Única
 	public static final String CU_URI_STR =  new String("https://www.claveunica.gob.cl/openid/authorize");
 
+	//URL de retorno/callback registrada en Clave Única y asociada al Client ID
 	public static final String RETURN_URL = "http://secure.agilesigner.com/openidconnectexample/return";
 	
-    /**
-     * Default constructor. 
-     */
-    public OpenIdConceptual() {
-        // TODO Auto-generated constructor stub
-    }
-
+	// ID Cliente entregado por SegPres
+	private static final String CLIENT_ID = "[ID_CLIENTE]";
+	
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -66,19 +66,20 @@ public class OpenIdConceptual extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
+	
 		HttpSession session = request.getSession();
 		
-		
+		//URL de autorización de CU
 		URI uri = new URI(CU_URI_STR);
+		
+		//Socope de Query a Clave Única
 		String scopeId = request.getParameter("scope"); //ID 1: rut, 2: nombre, 3:Sandbox
 		
+		//Delclaración URL a donde se responderá finalmente los datos obtenidos desde CU
 		String redirectPag = request.getParameter("redirectPage");
 		session.setAttribute("urlRedirect", redirectPag);
 		
-		/**
-		 * client_id: Este parámetro es proporcionado por medio de una solicitud a ClaveÚnica descrita en el paso : Solicitar ClaveÚnica.
-		 */
-		String clientId = request.getParameter("client_Id");
+		String clientId = CLIENT_ID;
 		session.setAttribute("clientId", clientId);
 		
 		//response_type: Este parámetro debe ser siempre code, esto solo indica el tipo de flujo de OpenID Connect.
@@ -98,7 +99,7 @@ public class OpenIdConceptual extends HttpServlet {
 		// Generate nonce
 		Nonce nonce = new Nonce();
 		
-		// Compose the request
+		// Se prepara el request a CU
 		AuthenticationRequest authenticationRequest = new AuthenticationRequest(
 		  uri,
 		  new ResponseType(ResponseType.Value.CODE),
@@ -107,11 +108,12 @@ public class OpenIdConceptual extends HttpServlet {
 		  authenticationRequest =	AuthenticationRequest.parse(uri, authenticationRequest.toQueryString());
 		  URI authReqURI = authenticationRequest.toURI();
 		  
-		  //Crea la URL de Respuesta
+		  //Crea la URL de Respuesta se debe eliminar %E2%80%8B ya que la API usada lo genera y CU no lo soporta
 		  response.sendRedirect(authReqURI.toString().replaceAll("%E2%80%8B",""));
 				
 		
 		} catch(Exception e) {
+			//AQUI hacer el manejo de errores
 			e.printStackTrace();
 			
 		}

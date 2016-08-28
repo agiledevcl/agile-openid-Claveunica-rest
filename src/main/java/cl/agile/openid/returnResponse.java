@@ -29,7 +29,7 @@ import com.nimbusds.openid.connect.sdk.AuthenticationSuccessResponse;
 public class returnResponse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final String SECRET = "37bcf29f82b6484ab24e46e3b6118c3c";
+	private static final String SECRET = "[SECRETO DEL CLIENTID]";
 
 	private static final String URL_CU_TOKEN = "https://www.claveunica.gob.cl/openid/token/";
 
@@ -82,9 +82,14 @@ public class returnResponse extends HttpServlet {
 			System.out.println(responseCU.getBody());
 			mapper = new ObjectMapper();
 			CUResponse cuResponse = mapper.readValue(responseCU.getBody(), CUResponse.class);
-
+			String redirectParameters = "nombres="+URLEncoder.encode(cuResponse.getNombres(), "UTF-8")
+										+ "&apellidoPaterno="+URLEncoder.encode(cuResponse.getApellidoPaterno(), "UTF-8")
+										+ "&apellidoMaterno="+URLEncoder.encode(cuResponse.getApellidoMaterno(), "UTF-8")
+										+ "&RUT="+URLEncoder.encode(cuResponse.getRUT(), "UTF-8")
+										+ "&sub="+URLEncoder.encode(cuResponse.getSub(), "UTF-8")
+										;
 			
-			 response.sendRedirect(urlRedirect);
+			 response.sendRedirect(urlRedirect+"?"+redirectParameters);
 		} catch (UnirestException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
