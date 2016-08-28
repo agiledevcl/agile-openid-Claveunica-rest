@@ -1,0 +1,37 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>OpenIdConceptual</servlet-name>
+  	<display-name>OpenIdConceptual</display-name>
+  	<description></description>
+  	<servlet-class>cl.agile.openid.OpenIdConceptual</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>returna</servlet-name>
+  	<display-name>returna</display-name>
+  	<description></description>
+  	<servlet-class>cl.agile.openid.returna</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>returnResponse</servlet-name>
+  	<display-name>returnResponse</display-name>
+  	<description></description>
+  	<servlet-class>cl.agile.openid.returnResponse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>OpenIdConceptual</servlet-name>
+  	<url-pattern>/OpenIdConceptual</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>returna</servlet-name>
+  	<url-pattern>/returna</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>returnResponse</servlet-name>
+  	<url-pattern>/return</url-pattern>
+  </servlet-mapping>
+</web-app>
