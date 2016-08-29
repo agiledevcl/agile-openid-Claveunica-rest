@@ -1,5 +1,14 @@
 package cl.agile.openid;
 
+
+/*
+	 * Ejemplo de implementación ClaveUnica OpenIdConnect
+	 * Author: Claudio Delgado
+	 * Mail: dev@agile.cl
+	 * Agile Ingeniería & Consultoría
+	 * www.agile.cl    
+ */
+
 public class CUResponse {
 	
 	public String nombres = "";
