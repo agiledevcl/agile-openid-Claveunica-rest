@@ -21,3 +21,5 @@ El presente ejemplo se basa en J2EE utilizando el Servlet contiener para realiza
 http://localhost:8080/OpenID/OpenIdCU?scope=3&redirectPage=http://localhost/OpenID/showResult
 
 Donde Scope 3 es SandBox Clave Unica y redirectPage es la página donde se mostrará el resultado final de la operación.
+
+## Dudas o feedback a : dev@agile.cl
