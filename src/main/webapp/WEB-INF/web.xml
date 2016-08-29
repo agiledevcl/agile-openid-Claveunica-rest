@@ -9,25 +9,26 @@
   <servlet-class>cl.agile.openid.OpenIdConceptual</servlet-class>
  </servlet>
  <servlet>
-  <servlet-name>returna</servlet-name>
-  <display-name>returna</display-name>
-  <servlet-class>cl.agile.openid.returna</servlet-class>
- </servlet>
- <servlet>
   <servlet-name>returnResponse</servlet-name>
   <display-name>returnResponse</display-name>
   <servlet-class>cl.agile.openid.returnResponse</servlet-class>
+ </servlet>
+ <servlet>
+ 	<servlet-name>showResult</servlet-name>
+ 	<display-name>showResult</display-name>
+ 	<description></description>
+ 	<servlet-class>cl.agile.openid.ShowResult</servlet-class>
  </servlet>
  <servlet-mapping>
   <servlet-name>OpenIdConceptual</servlet-name>
   <url-pattern>/OpenIdCU</url-pattern>
  </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>returna</servlet-name>
-  <url-pattern>/returna</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>returnResponse</servlet-name>
+  <servlet-mapping>
+ 	<servlet-name>returnResponse</servlet-name>
   <url-pattern>/return</url-pattern>
  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>showResult</servlet-name>
+  	<url-pattern>/showResult</url-pattern>
+  </servlet-mapping>
 </web-app>
