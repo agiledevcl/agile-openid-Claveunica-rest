@@ -1,5 +1,13 @@
 package cl.agile.openid;
 
+/*
+	 * Ejemplo de implementación ClaveUnica OpenIdConnect
+	 * Author: Claudio Delgado
+	 * Mail: dev@agile.cl
+	 * Agile Ingeniería & Consultoría
+	 * www.agile.cl    
+ */
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
