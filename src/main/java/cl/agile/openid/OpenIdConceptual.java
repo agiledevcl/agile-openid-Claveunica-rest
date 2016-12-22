@@ -55,7 +55,7 @@ public class OpenIdConceptual extends HttpServlet {
 	public static final String CU_URI_STR =  new String("https://www.claveunica.gob.cl/openid/authorize");
 
 	//URL de retorno/callback registrada en Clave Única y asociada al Client ID
-	public static final String RETURN_URL = "http://secure.agilesigner.com/openidconnectexample/return";
+	public static final String RETURN_URL = "[RETURN_URL]";
 	
 	// ID Cliente entregado por SegPres
 	private static final String CLIENT_ID = "[ID_CLIENTE]";
