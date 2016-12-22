@@ -1,5 +1,13 @@
 package cl.agile.openid;
 
+/*
+	 * Ejemplo de implementación ClaveUnica OpenIdConnect
+	 * Author: Claudio Delgado
+	 * Mail: dev@agile.cl
+	 * Agile Ingeniería & Consultoría
+	 * www.agile.cl    
+ */
+
 public class AccessToken {
 	
 	public String access_token;
@@ -7,8 +15,18 @@ public class AccessToken {
 	public int expires_in;
 	public String id_token;
 	public String refresh_token;
+<<<<<<< HEAD
 	public String error_description;
 	public String error;
+=======
+	
+	public String getRefresh_token() {
+		return refresh_token;
+	}
+	public void setRefresh_token(String refresh_token) {
+		this.refresh_token = refresh_token;
+	}
+>>>>>>> branch 'master' of https://github.com/agiledevcl/agile-openid-Claveunica-rest.git
 	
 	public String getAccess_token() {
 		return access_token;
