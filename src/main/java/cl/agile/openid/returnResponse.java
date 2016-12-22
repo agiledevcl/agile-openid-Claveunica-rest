@@ -31,7 +31,7 @@ import com.nimbusds.openid.connect.sdk.AuthenticationSuccessResponse;
 public class returnResponse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final String SECRET = "37bcf29f82b6484ab24e46e3b6118c3c";//"[SECRETO DEL CLIENTID]";
+	private static final String SECRET = "[SECRETO DEL CLIENTID]";
 
 	private static final String URL_CU_TOKEN = "https://www.claveunica.gob.cl/openid/token/";
 
