@@ -94,13 +94,12 @@ public class returnResponse extends HttpServlet {
 			mapper = new ObjectMapper();
 			CURUNResponse cuResponse = mapper.readValue(responseCU.getBody(), CURUNResponse.class);
 			String redirectParameters = "nombres="+URLEncoder.encode(cuResponse.getNombresAsString(), "UTF-8")
-										+ "&apellido="+URLEncoder.encode(cuResponse.getApellidosAsString(), "UTF-8")
+										+ "&apellidos="+URLEncoder.encode(cuResponse.getApellidosAsString(), "UTF-8")
 										+ "&RUT="+URLEncoder.encode(cuResponse.getRUNAsString(), "UTF-8")
 										+ "&sub="+URLEncoder.encode(cuResponse.getSub(), "UTF-8")
 										;
 			
-			
-			 response.sendRedirect(urlRedirect+"?"+URLEncoder.encode(redirectParameters, "UTF-8"));
+			 response.sendRedirect(urlRedirect+"?"+redirectParameters);
 		} catch (UnirestException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

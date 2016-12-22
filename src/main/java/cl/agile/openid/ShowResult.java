@@ -33,16 +33,14 @@ public class ShowResult extends HttpServlet {
 		
 		String nombres = request.getParameter("nombres");
 
-		String appellidoPaterno = request.getParameter("appellidoPaterno");
+		String apellidos = request.getParameter("appellidoPaterno");
 
-		String appellidoMaterno = request.getParameter("appellidoMaterno");
-
+	
 		String rut = request.getParameter("RUT");
 		
 	   ServletOutputStream out = response.getOutputStream();
 		out.println("Nombres " + nombres );
-		out.println("A. Paterno " + appellidoPaterno );
-		out.println("A. Materno " + appellidoMaterno  );
+		out.println("Apellidos " + apellidos );
 		out.println("RUT " + rut  );
 
 	}
