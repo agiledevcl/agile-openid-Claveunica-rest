@@ -50,7 +50,7 @@ public class OpenIdConceptual extends HttpServlet {
 	public static final String RETURN_URL = "http://secure.agilesigner.com/openidconnectexample/return";
 	
 	// ID Cliente entregado por SegPres
-	private static final String CLIENT_ID = "[ID_CLIENTE]";
+	private static final String CLIENT_ID = "67a7472a7716463ca4bd6628e9b81da8";//"[ID_CLIENTE]";
 	
 	
 	/**

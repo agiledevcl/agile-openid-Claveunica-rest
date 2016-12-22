@@ -7,6 +7,7 @@ public class ScopeCU extends Scope{
 	public static final String SANDBOX = "3";
 	public static final String RUT = "1";
 	public static final String NOMBRE = "2";
+	public static final String RUN = "4";
 
 	
 	public ScopeCU(String value) {
@@ -18,8 +19,12 @@ public class ScopeCU extends Scope{
 		}
 		if(value.equalsIgnoreCase(RUT)){
 			this.add("rut");
+			
 		}if(value.equalsIgnoreCase(NOMBRE)){
 			this.add("nombre");
+		}
+		if(value.equalsIgnoreCase(NOMBRE)){
+			this.add("run name");
 		}
 	}
 

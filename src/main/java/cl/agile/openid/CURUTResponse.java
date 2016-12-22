@@ -1,6 +1,6 @@
 package cl.agile.openid;
 
-public class CUResponse {
+public class CURUTResponse {
 	
 	public String nombres = "";
 	public String apellidoPaterno = "";

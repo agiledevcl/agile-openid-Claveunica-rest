@@ -3,6 +3,7 @@ package cl.agile.openid;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import com.nimbusds.oauth2.sdk.AuthorizationCode;
 import com.nimbusds.oauth2.sdk.ErrorObject;
 import com.nimbusds.oauth2.sdk.ParseException;
+import com.nimbusds.oauth2.sdk.util.URIUtils;
 import com.nimbusds.openid.connect.sdk.AuthenticationErrorResponse;
 import com.nimbusds.openid.connect.sdk.AuthenticationResponse;
 import com.nimbusds.openid.connect.sdk.AuthenticationResponseParser;
@@ -29,7 +31,7 @@ import com.nimbusds.openid.connect.sdk.AuthenticationSuccessResponse;
 public class returnResponse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final String SECRET = "[SECRETO DEL CLIENTID]";
+	private static final String SECRET = "37bcf29f82b6484ab24e46e3b6118c3c";//"[SECRETO DEL CLIENTID]";
 
 	private static final String URL_CU_TOKEN = "https://www.claveunica.gob.cl/openid/token/";
 
@@ -71,6 +73,7 @@ public class returnResponse extends HttpServlet {
 					  .asString();
 			
 			System.out.println(responseCU.getBody());
+			//Se debe manejar errores aquí
 			ObjectMapper mapper = new ObjectMapper();
 			AccessToken accessToken = mapper.readValue(responseCU.getBody(), AccessToken.class);
 			
@@ -81,15 +84,15 @@ public class returnResponse extends HttpServlet {
 					  .asString();
 			System.out.println(responseCU.getBody());
 			mapper = new ObjectMapper();
-			CUResponse cuResponse = mapper.readValue(responseCU.getBody(), CUResponse.class);
-			String redirectParameters = "nombres="+URLEncoder.encode(cuResponse.getNombres(), "UTF-8")
-										+ "&apellidoPaterno="+URLEncoder.encode(cuResponse.getApellidoPaterno(), "UTF-8")
-										+ "&apellidoMaterno="+URLEncoder.encode(cuResponse.getApellidoMaterno(), "UTF-8")
-										+ "&RUT="+URLEncoder.encode(cuResponse.getRUT(), "UTF-8")
+			CURUNResponse cuResponse = mapper.readValue(responseCU.getBody(), CURUNResponse.class);
+			String redirectParameters = "nombres="+URLEncoder.encode(cuResponse.getNombresAsString(), "UTF-8")
+										+ "&apellido="+URLEncoder.encode(cuResponse.getApellidosAsString(), "UTF-8")
+										+ "&RUT="+URLEncoder.encode(cuResponse.getRUNAsString(), "UTF-8")
 										+ "&sub="+URLEncoder.encode(cuResponse.getSub(), "UTF-8")
 										;
 			
-			 response.sendRedirect(urlRedirect+"?"+redirectParameters);
+			
+			 response.sendRedirect(urlRedirect+"?"+URLEncoder.encode(redirectParameters, "UTF-8"));
 		} catch (UnirestException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
